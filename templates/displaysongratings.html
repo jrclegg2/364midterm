@@ -1,0 +1,17 @@
+{% block content %}
+<p> Song {{ song }} has been rated the following: </p>
+<ul>
+{% for song in data %}
+    <li>User {{ song[1] }} rated the song {{ song[0] }}</li>
+{% endfor %}
+</ul>
+
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% extends 'base.html' %}

@@ -1,0 +1,22 @@
+{% block content %}
+
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>*** {{ message }} ***</strong>
+{% endfor %}
+
+</div>
+<div>
+<form method="POST" action = "/">
+    {{ form.hidden_tag() }}
+    {{ form.name.label() }} {{ form.name() }}<br>
+    {{ form.song.label() }}{{ form.song() }}<br>
+    {{ form.artist.label() }}{{ form.artist() }}<br>
+    {{ form.rating.label() }}{{ form.rating() }}<br>
+    {{ form.submit() }}
+</form>
+</div>
+
+{% endblock %}
+
+{% extends 'base.html' %}

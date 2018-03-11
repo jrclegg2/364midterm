@@ -1,0 +1,24 @@
+{% block content %}
+
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% if dict['status'] != 200 %}
+  <strong>*** FAILURE - COULD NOT FIND SONG *** </strong>
+  <p> <a href = '/'> Try again! </a> </p>
+{% endif %}
+
+
+{% if working %}
+<p> Successfully found the song {{ dict['track'] }}! You rated it {{ dict['guessRating'] }}, however it's actually rated {{dict['rating']}} , you were off by {{ dict['difference'] }}</p>
+{% endif %}
+<strong> ----------------------------- </strong>
+{% for rating in data %}
+<p> Song {{ rating[1] }} received a {{ rating[0] }}! </p>
+{% endfor %}
+{% endblock %}
+
+{% extends 'base.html' %}

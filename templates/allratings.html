@@ -1,0 +1,19 @@
+{% block content %}
+
+<div>
+  <form method = "GET" action = "/displayratings">
+    {{ form.hidden_tag() }}
+    {{ form.type.label() }} {{ form.type() }}
+    {{ form.query.label() }} {{ form.query() }}
+    {{ form.submit() }}
+  </form>
+</div>
+
+{% for message in get_flashed_messages() %}
+    <strong>*** {{ message }} ***</strong>
+{% endfor %}
+
+
+{% endblock %}
+
+{% extends 'base.html' %}

@@ -1,0 +1,20 @@
+{% block content %}
+
+<div>
+<form method="GET" action = "/socialsearch">
+    {{ form.hidden_tag() }}
+    {{ form.search.label() }}{{ form.search() }}<br>
+    {{ form.results.label() }}{{ form.results() }}<br>
+    {{ form.type.label() }}{{ form.type() }}<br>
+    {{ form.submit() }}
+</form>
+</div>
+
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>*** {{ message }} ***</strong>
+{% endfor %}
+
+</div>
+
+{% endblock %}

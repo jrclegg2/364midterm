@@ -1,0 +1,23 @@
+{% block content %}
+
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+<p> Here are your results for {{ dict['search'] }}! </p>
+<div>
+  <ul>
+  {% for post in dict['postsData'] %}
+  <li> Text: {{ post[0] }},
+    URL: {{ post[1] }} </li>
+  {% endfor %}
+  </ul>
+</div>
+
+{% if dict['status'] != 200 %}
+  <strong>*** FAILURE - COULD NOT EXECUTE SEARCH *** </strong>
+{% endif %}
+
+{% endblock %}
