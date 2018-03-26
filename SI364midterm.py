@@ -21,10 +21,10 @@ app.use_reloader = True
 
 ## All app.config values
 app.config['SECRET_KEY'] = "umich is an 16 awesome 20 place"
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://jack:jack@localhost/jrcleggmidterm"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL') or "postgresql://jack:jack@localhost/jrcleggmidterm"
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+app.config['HEROKU_ON'] = os.environ.get('HEROKU')
 ## Statements for db setup (and manager setup if using Manager)
 db = SQLAlchemy(app)
 
